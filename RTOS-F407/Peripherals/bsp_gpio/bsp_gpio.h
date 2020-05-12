@@ -12,9 +12,6 @@
 #define 	LED2_GPIO_PORT		GPIOF                      
 #define 	LED2_GPIO_CLK			RCC_AHB1Periph_GPIOF
  
-#define 	LED3_PIN					GPIO_Pin_8                 
-#define 	LED3_GPIO_PORT		GPIOF                       
-#define 	LED3_GPIO_CLK			RCC_AHB1Periph_GPIOF
  
 #define 	ON  	0
 #define 	OFF 	1
@@ -30,10 +27,6 @@
 					else		\
 					GPIO_ResetBits(LED2_GPIO_PORT,LED2_PIN)
 
-#define LED3(a)	if (a)	\
-					GPIO_SetBits(LED3_GPIO_PORT,LED3_PIN);\
-					else		\
-					GPIO_ResetBits(LED3_GPIO_PORT,LED3_PIN)
  
 void LED_GPIO_Config(void);
 

@@ -337,7 +337,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F40_41xxx,</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User;..\..\FreeRTOS\inc;..\..\Peripherals\bsp_gpio;..\..\Tasks;..\..\Peripherals\bsp_usarts;..\..\Peripherals\bsp_spi_x;..\..\Peripherals\Ymodem;..\..\Peripherals\bsp_flash</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\User;..\..\FreeRTOS\inc;..\..\Peripherals\bsp_gpio;..\..\Tasks;..\..\Peripherals\bsp_usarts;..\..\Peripherals\bsp_spi_x;..\..\Peripherals\Ymodem;..\..\Peripherals\bsp_flash;..\..\Peripherals\bsp_sdio</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -868,6 +868,16 @@
               <FileName>flash_if.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Peripherals\bsp_flash\flash_if.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_sdio_sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Peripherals\bsp_sdio\bsp_sdio_sd.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdio_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Peripherals\bsp_sdio\sdio_test.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -4,7 +4,7 @@ void LED_GPIO_Config(void){
 
 	GPIO_InitTypeDef GPIO_InitStructure;
 
-	RCC_AHB1PeriphClockCmd ( LED1_GPIO_CLK | LED2_GPIO_CLK | LED3_GPIO_CLK, ENABLE); 
+	RCC_AHB1PeriphClockCmd ( LED1_GPIO_CLK | LED2_GPIO_CLK, ENABLE); 
 
 	GPIO_InitStructure.GPIO_Pin 	= LED1_PIN;	
 	GPIO_InitStructure.GPIO_Mode 	= GPIO_Mode_OUT;   
@@ -13,11 +13,8 @@ void LED_GPIO_Config(void){
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz; 
 	GPIO_Init(LED1_GPIO_PORT, &GPIO_InitStructure);	
 
-	GPIO_InitStructure.GPIO_Pin	= LED2_PIN;	
+	GPIO_InitStructure.GPIO_Pin	= LED2_PIN;
 	GPIO_Init(LED2_GPIO_PORT, &GPIO_InitStructure);	
-														 
-	GPIO_InitStructure.GPIO_Pin	= LED3_PIN;	
-	GPIO_Init(LED3_GPIO_PORT, &GPIO_InitStructure);	
- 
+
 }
 
