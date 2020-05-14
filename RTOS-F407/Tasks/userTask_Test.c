@@ -1,4 +1,6 @@
 #include "userTask_Test.h"
+#include "log.h"
+#include "sdio_test.h"
 
 static void  userTest_func(void *pvParameters);
 
@@ -20,6 +22,8 @@ static void  userTest_func(void *pvParameters){
 
 	LED_GPIO_Config();
 	
+	usart1_config();
+	
 	for(;;){//"vTaskBLELoad"
 		
 		LED1(ON);
@@ -29,8 +33,9 @@ static void  userTest_func(void *pvParameters){
 		LED2(OFF);
 		vTaskDelay( pdMS_TO_TICKS(500));
 		
-		printf("Hello World.");
-		
+		LogInfo("Error!!!","Os Stack overflowll");
+//		printf("\r\n开始进行SD卡读写实验\r\n");	
+		SD_Test();		
 	}
 	
 }

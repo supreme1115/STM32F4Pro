@@ -625,19 +625,18 @@ SD_Error SD_Init(void)
   
 	/**************≈‰÷√SDIO÷–∂œ DMA÷–∂œ**********************/
 	NVIC_InitTypeDef NVIC_InitStructure;
-	
-	// Configure the NVIC Preemption Priority Bits 
+ 
 	NVIC_PriorityGroupConfig (NVIC_PriorityGroup_1);
-	NVIC_InitStructure.NVIC_IRQChannel = SDIO_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannel                   = SDIO_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority        = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd                = ENABLE;
 	NVIC_Init (&NVIC_InitStructure);
+	
 	NVIC_InitStructure.NVIC_IRQChannel = SD_SDIO_DMA_IRQn;
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
 	NVIC_Init (&NVIC_InitStructure);
-	/**********************************************************/
-	
+ 
   /* SDIO Peripheral Low Level Init */
   SD_LowLevel_Init();
 
@@ -645,16 +644,14 @@ SD_Error SD_Init(void)
 
   errorstatus = SD_PowerON();
 
-  if (errorstatus != SD_OK)
-  {
+  if (errorstatus != SD_OK){
     /*!< CMD Response TimeOut (wait for CMDSENT flag) */
     return(errorstatus);
   }
 
   errorstatus = SD_InitializeCards();
 
-  if (errorstatus != SD_OK)
-  {
+  if (errorstatus != SD_OK){
     /*!< CMD Response TimeOut (wait for CMDSENT flag) */
     return(errorstatus);
   }
@@ -662,30 +659,30 @@ SD_Error SD_Init(void)
   /*!< Configure the SDIO peripheral */
   /*!< SDIO_CK = SDIOCLK / (SDIO_TRANSFER_CLK_DIV + 2) */
   /*!< on STM32F4xx devices, SDIOCLK is fixed to 48MHz */
-  SDIO_InitStructure.SDIO_ClockDiv = SDIO_TRANSFER_CLK_DIV;
-  SDIO_InitStructure.SDIO_ClockEdge = SDIO_ClockEdge_Rising;
-  SDIO_InitStructure.SDIO_ClockBypass = SDIO_ClockBypass_Disable;
-  SDIO_InitStructure.SDIO_ClockPowerSave = SDIO_ClockPowerSave_Disable;
-  SDIO_InitStructure.SDIO_BusWide = SDIO_BusWide_1b;
+  SDIO_InitStructure.SDIO_ClockDiv       			= SDIO_TRANSFER_CLK_DIV;
+  SDIO_InitStructure.SDIO_ClockEdge 					= SDIO_ClockEdge_Rising;
+  SDIO_InitStructure.SDIO_ClockBypass 				= SDIO_ClockBypass_Disable;
+  SDIO_InitStructure.SDIO_ClockPowerSave 			= SDIO_ClockPowerSave_Disable;
+  SDIO_InitStructure.SDIO_BusWide 						= SDIO_BusWide_1b;
   SDIO_InitStructure.SDIO_HardwareFlowControl = SDIO_HardwareFlowControl_Disable;
   SDIO_Init(&SDIO_InitStructure);
 
   /*----------------- Read CSD/CID MSD registers ------------------*/
   errorstatus = SD_GetCardInfo(&SDCardInfo);
 
-  if (errorstatus == SD_OK)
-  {
+  if (errorstatus == SD_OK){
     /*----------------- Select Card --------------------------------*/
     errorstatus = SD_SelectDeselect((uint32_t) (SDCardInfo.RCA << 16));
   }
 
-  if (errorstatus == SD_OK)
-  {
+  if (errorstatus == SD_OK){
     errorstatus = SD_EnableWideBusOperation(SDIO_BusWide_4b);
   }  
 
   return(errorstatus);
+	
 }
+
 
 /**
   * @brief  Gets the cuurent sd card data transfer status.
@@ -695,8 +692,8 @@ SD_Error SD_Init(void)
   *        - SD_TRANSFER_OK: No data transfer is acting
   *        - SD_TRANSFER_BUSY: Data transfer is acting
   */
-SDTransferState SD_GetStatus(void)
-{
+SDTransferState SD_GetStatus(void){
+	
   SDCardState cardstate =  SD_CARD_TRANSFER;
 
   cardstate = SD_GetState();

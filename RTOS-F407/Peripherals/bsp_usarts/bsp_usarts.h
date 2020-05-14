@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include "ymodem.h"
 
+#include "parameters.h"
+
 #define 	DEBUG_USART									USART1
 #define 	DEBUG_USART_CLK							RCC_APB2Periph_USART1
 
@@ -22,7 +24,9 @@
  
 #define 	DEBUG_USART_BAUDRATE				115200
  
-void Debug_USART_Config(void);
-//int fputc(int ch, FILE *f);
+void usart1_config(void);
+
+void USART_Send_Bytes(USART_TypeDef* USARTx, u8* Data,u8 size);
+void DEBUG_USART_Send_Bytes(uint8_t* pData, uint16_t DataLen);
 
 #endif /* __USART1_H */

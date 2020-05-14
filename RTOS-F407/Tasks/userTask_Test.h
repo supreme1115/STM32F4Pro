@@ -12,6 +12,7 @@
 #include "parameters.h"
 
 #include "bsp_gpio.h"
+#include "bsp_usarts.h"
 
 void create_userTest_Task(void);
 
